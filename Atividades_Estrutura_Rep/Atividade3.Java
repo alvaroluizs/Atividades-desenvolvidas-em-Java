@@ -1,14 +1,19 @@
 import java.util.Scanner;
+
 public class Main {
+    private static Scanner scanner;
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
         String nome;
         String sexo;
-        String estadoS;
+        String estadoS = null;
         int idade;
         double salario;
         int tamanhoNome;
+        String estadoS2 = null;
 
         System.out.print("Digite seu nome: ");
         nome = input.nextLine();
@@ -74,21 +79,35 @@ public class Main {
 
             } while (!sexo.equalsIgnoreCase("F") && !sexo.equalsIgnoreCase("M"));
 
-        } System.out.println("Registrado!");
-
-        System.out.println("Estado Civil: S - SOLTEIRO | C - CASADO | V - VIVENDO | D - DIVORCIADO ");
-        estadoS = input.nextLine();
-        if (!estadoS.equalsIgnoreCase("S") | !estadoS.equalsIgnoreCase("C") |
-                estadoS.equalsIgnoreCase("V") | estadoS.equalsIgnoreCase("D")) {
-
-        do {
-            System.out.println("ERRO |Estado Civil Incorreto|.");
-            System.out.print("Digite seu Estado Civil novamente: ");
-            estadoS = input.nextLine();
-        } while ((!estadoS.equalsIgnoreCase("S") | !estadoS.equalsIgnoreCase("C") |
-                estadoS.equalsIgnoreCase("V") | estadoS.equalsIgnoreCase("D")));
         }
         System.out.println("Registrado!");
-    }
-}
 
+        System.out.print("Digite seu estado civil (S - Solteiro, C - Casado, V - Vivendo em União Estável, D - Divorciado): ");
+        estadoS = scanner.nextLine().toUpperCase();
+
+        while (!estadoS.equals("S") && !estadoS.equals("C") && !estadoS.equals("V") && !estadoS.equals("D")) {
+
+            System.out.print("Estado civil inválido. Digite novamente: ");
+            estadoS = scanner.nextLine().toUpperCase();
+
+        } switch (estadoS) {
+
+                case "S":
+                    System.out.println("Registrado |Estado Civil Solteiro");
+                    break;
+
+                case "C":
+                    System.out.println("Registrado | Estado Civil Casado");
+                    break;
+                case "V":
+                    System.out.println("Registrado | Estado Civil Vivendo");
+                    break;
+
+                case "D":
+                    System.out.println("Registrado | Estado Civil Divorciado");
+                    break;
+            }
+        }
+
+
+    }
